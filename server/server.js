@@ -22,12 +22,22 @@ app.post('/bundle', function(request, response) {
   response.send(ok);
 });
 
+/**
+ * 
+ */
 app.get('/result', function(request, response) {
   response.send(bundleCalculations);
 });
 
-app.delete('/result', function(request, response) {
+app.delete('/result', function(req, response) {
   bundleCalculations = [];
+  console.log('request param', req.params.id);
+  response.send(bundleCalculations);
+});
+
+app.delete('/result:id', function(req, response) {
+  bundleCalculations.splice(req.params.id, 1);
+  console.log('request param', req.params.id);
   response.send(bundleCalculations);
 });
 

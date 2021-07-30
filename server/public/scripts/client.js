@@ -10,6 +10,7 @@ function onReady() {
   $(document).on('click', '#key', createInput);
   $(document).on('click', '#equals', checkIfFieldHasValue);
   $(document).on('click', '#delete-all', DeleteAll);
+  $(document).on('click', '#delete', DeleteIndividualRecord);
   $(document).on('click', '#run-again', showPreviousCalc);
   getResults();
 }
@@ -85,6 +86,10 @@ function getResults() {
   });
 }
 
+/**
+ * Delete All
+ * Deletes the entire array on the server side
+ */
 function DeleteAll() {
   $.ajax({
     url: '/result',
@@ -93,6 +98,21 @@ function DeleteAll() {
         // Do something with the result
         $('#result-value').text(0);
         $('#result-equation').text('');
+        getResults();
+    }
+  });
+} 
+
+/**
+ * Delete Individual Record
+ */
+function DeleteIndividualRecord() {
+  let id = $(this).closest('tr').data('id');
+  console.log(id);
+  $.ajax({
+    url: `/result${id}`,
+    type: 'DELETE',
+    success: function(result) {
         getResults();
     }
   });
