@@ -14,42 +14,43 @@
   <h1>Calculator</h1>
   <div id="main">
     <div id="calc-container">
-      <div class="row">
-        <input type="text" id="input1">
+      <div class="rows input-clear-row">
+        <input type="text" id="input1" class="form-control">
         <button id="clear" data-key="c" class="btn btn-primary">C</button>
       </div>
-      <div class="row">
+      <div class="rows">
         <button id="key" data-key="7" class="btn btn-primary">7</button>
         <button id="key" data-key="8" class="btn btn-primary">8</button>
         <button id="key" data-key="9" class="btn btn-primary">9</button>
         <button id="key" data-key="+" class="btn btn-primary">+</button>
       </div>
-      <div class="row">
+      <div class="rows">
         <button id="key" data-key="4" class="btn btn-primary">4</button>
         <button id="key" data-key="5" class="btn btn-primary">5</button>
         <button id="key" data-key="6" class="btn btn-primary">6</button>
         <button id="key" data-key="-" class="btn btn-primary">-</button>
       </div>
-      <div class="row">
+      <div class="rows">
         <button id="key" data-key="1" class="btn btn-primary">1</button>
         <button id="key" data-key="2" class="btn btn-primary">2</button>
         <button id="key" data-key="3" class="btn btn-primary">3</button>  
         <button id="key" data-key="*" class="btn btn-primary">*</button>
       </div>
-      <div class="row">
+      <div class="rows">
         <button id="key" data-key="0" class="btn btn-primary">0</button>
         <button id="key" data-key="." class="btn btn-primary">.</button>
         <button id="equals" data-key="=" class="btn btn-primary">=</button>
         <button id="key" data-key="/" class="btn btn-primary"d>/</button>
       </div>
     </div>
-    <h2 id="result"></h2>
+    <h2 id="result">Value: <span id="result-value"></span></h2>
   </div>
 
   <table id="results" class="table table-striped">
     <thead>
       <th>Previous Equation</th>
       <th>Result</th>
+      <th><button class="btn btn-warning">Clear All</button></th>
     </thead>
     <tbody>
       <!-- Dynamic Data -->

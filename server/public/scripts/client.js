@@ -6,12 +6,9 @@ let inputString = '';
 let inputArray = [];
 
 function onReady() {
-  console.log('ready');
-  // $(document).on('click','#submitBtn', bundle);
   $(document).on('click','#clear', clearInput);
   $(document).on('click', '#key', createInput);
   $(document).on('click', '#equals', checkIfFieldHasValue);
-  // $(document).on('click', '#equals', bundle);
   getResults();
 }
 
@@ -34,7 +31,7 @@ function checkIfFieldHasValue() {
   if($('#input1').val()) {
     bundle();
   } else {
-    alert('yeah ya did not do anything..');
+    alert("yeah you didn't type anything in buddy");
   }
 }
 
@@ -55,8 +52,8 @@ function bundle() {
     $('body').prepend('<h2>ERROR</h2>');
   });
   $('#input1').val('');
-  inputString = '';
-  getResults();
+  inputString = ''; // Sets our input string back to empty
+  getResults(); 
 }
 
 /**
@@ -68,7 +65,7 @@ function getResults() {
     type: 'GET',
     url: '/result'
   }).then(function (response) {
-    $('#result').text(response[response.length - 1].value);
+    $('#result-value').text(response[response.length - 1].value);
     $('#results').find('tbody').empty();
     for (let i = 0; i < response.length; i++) {
         let equation = response[i];
@@ -76,6 +73,7 @@ function getResults() {
             <tr>
                 <td>${equation.equation}</td>
                 <td>${equation.value}</td>
+                <td><button class="btn btn-danger">DELETE</button></td>
             </tr>
         `);
     }

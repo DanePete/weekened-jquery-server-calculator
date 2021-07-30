@@ -1,3 +1,31 @@
 body {
   margin: 100px;
 }
+
+#key, #equals {
+  width: 50px;
+  height: 50px;
+  margin: 5px;
+}
+
+#input1 {
+  margin-right: 5px;
+}
+
+.input-clear-row {
+  display: flex;
+  width: 235px;
+  margin: 5px;
+}
+
+#calc-container {
+  float: left;
+}
+
+#result {
+  float: right;
+}
+
+#result-value {
+  color: red;
+}
