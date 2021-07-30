@@ -15,11 +15,7 @@ app.use(bodyParser.urlencoded({extended:true}))
 app.use(express.static('server/public'));
 
 app.post('/bundle', function(request, response) {
-  console.log('Ready to take in an equation');
-  console.log('request.route.path is', request.route.path);
-  console.log('request.body', request.body);
   let equation = request.body;
-  console.log('equation', eval(equation.val));
   bundleCalculations.push({equation: equation.val, value: eval(equation.val)});
   console.log(bundleCalculations);
   let ok = 200;
@@ -27,8 +23,11 @@ app.post('/bundle', function(request, response) {
 });
 
 app.get('/result', function(request, response) {
-  console.log('Ready to send back the result');
-  console.log('request.route.path is', request.route.path);
+  response.send(bundleCalculations);
+});
+
+app.delete('/result', function(request, response) {
+  bundleCalculations = [];
   response.send(bundleCalculations);
 });
 

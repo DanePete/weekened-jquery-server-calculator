@@ -9,6 +9,7 @@ function onReady() {
   $(document).on('click','#clear', clearInput);
   $(document).on('click', '#key', createInput);
   $(document).on('click', '#equals', checkIfFieldHasValue);
+  $(document).on('click', '#delete-all', DeleteAll);
   getResults();
 }
 
@@ -65,7 +66,9 @@ function getResults() {
     type: 'GET',
     url: '/result'
   }).then(function (response) {
-    $('#result-value').text(response[response.length - 1].value);
+    if(response[response.length - 1]) {
+      $('#result-value').text(response[response.length - 1].value);
+    }
     $('#results').find('tbody').empty();
     for (let i = 0; i < response.length; i++) {
         let equation = response[i];
@@ -73,12 +76,24 @@ function getResults() {
             <tr>
                 <td>${equation.equation}</td>
                 <td>${equation.value}</td>
-                <td><button class="btn btn-danger">DELETE</button></td>
+                <td><button id="delete" class="btn btn-danger">DELETE</button></td>
             </tr>
         `);
     }
   });
 }
+
+function DeleteAll() {
+  $.ajax({
+    url: '/result',
+    type: 'DELETE',
+    success: function(result) {
+        // Do something with the result
+        $('#result-value').text(0);
+        getResults();
+    }
+  });
+} 
 
 /**
  * Clear Input
