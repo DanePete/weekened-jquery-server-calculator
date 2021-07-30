@@ -20,7 +20,7 @@ app.post('/bundle', function(request, response) {
   console.log('request.body', request.body);
   let equation = request.body;
   console.log('equation', eval(equation.val));
-  bundleCalculations.push(eval(equation.val));
+  bundleCalculations.push({equation: equation.val, value: eval(equation.val)});
   console.log(bundleCalculations);
   let ok = 200;
   response.send(ok);
