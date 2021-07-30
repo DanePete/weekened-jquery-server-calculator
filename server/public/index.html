@@ -6,16 +6,53 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="vendors/jquery.min.js"></script>
   <script src="scripts/client.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/darkly/bootstrap.min.css">
+  <link rel="stylesheet" href="styles/style.css">
   <title>Weekend jQuery server calculator</title>
 </head>
 <body>
   <h1>Calculator</h1>
-  <input type="number" id="input1">
-  <button id = "add">+</button>
-  <button id = "minus">-</button>
-  <button id = "multiply">*</button>
-  <button id = "divide">/</button>
-  <input type="number" id="input2">
-  <button id = "solve">=</button>
+  <div id="calc-container">
+    <div class="row">
+      <input type="text" id="input1">
+      <button id="clear" data-key="c" class="btn btn-primary">C</button>
+    </div>
+    <div class="row">
+      <button id="key" data-key="7" class="btn btn-primary">7</button>
+      <button id="key" data-key="8" class="btn btn-primary">8</button>
+      <button id="key" data-key="9" class="btn btn-primary">9</button>
+      <button id="key" data-key="+" class="btn btn-primary">+</button>
+    </div>
+    <div class="row">
+      <button id="key" data-key="4" class="btn btn-primary">4</button>
+      <button id="key" data-key="5" class="btn btn-primary">5</button>
+      <button id="key" data-key="6" class="btn btn-primary">6</button>
+      <button id="key" data-key="-" class="btn btn-primary">-</button>
+    </div>
+    <div class="row">
+      <button id="key" data-key="1" class="btn btn-primary">1</button>
+      <button id="key" data-key="2" class="btn btn-primary">2</button>
+      <button id="key" data-key="3" class="btn btn-primary">3</button>  
+      <button id="key" data-key="*" class="btn btn-primary">*</button>
+    </div>
+    <div class="row">
+      <button id="key" data-key="0" class="btn btn-primary">0</button>
+      <button id="key" data-key="." class="btn btn-primary">.</button>
+      <button id="equals" data-key="=" class="btn btn-primary">=</button>
+      <button id="key" data-key="/" class="btn btn-primary"d>/</button>
+    </div>
+
+    <table id="results" class="table table-striped">
+      <thead>
+        <th>Equation</th>
+      </thead>
+      <tbody>
+
+      </tbody>
+    </table>
+
+
+
+  </div>
 </body>
 </html>
