@@ -43,13 +43,18 @@
         <button id="key" data-key="/" class="btn btn-primary"d>/</button>
       </div>
     </div>
-    <h2 id="result">Value: <span id="result-value">0</span></h2>
+    <div id="result-container">
+      <h2 id="result">Equation: <span id="result-equation"><i></i></span></h2>
+      <h2 id="result">Value: <span id="result-value">0</span></h2>
+    </div>
+    
   </div>
 
   <table id="results" class="table table-striped">
     <thead>
       <th>Previous Equation</th>
       <th>Result</th>
+      <th></th>
       <th><button id="delete-all" class="btn btn-warning">Clear All</button></th>
     </thead>
     <tbody>

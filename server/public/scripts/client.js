@@ -10,6 +10,7 @@ function onReady() {
   $(document).on('click', '#key', createInput);
   $(document).on('click', '#equals', checkIfFieldHasValue);
   $(document).on('click', '#delete-all', DeleteAll);
+  $(document).on('click', '#run-again', showPreviousCalc);
   getResults();
 }
 
@@ -67,15 +68,16 @@ function getResults() {
     url: '/result'
   }).then(function (response) {
     if(response[response.length - 1]) {
-      $('#result-value').text(response[response.length - 1].value);
+      setValues(response[response.length - 1].equation, response[response.length - 1].value);
     }
     $('#results').find('tbody').empty();
     for (let i = 0; i < response.length; i++) {
         let equation = response[i];
         $('#results tbody').append(`
-            <tr>
+            <tr data-id="${i}" data-equation="${equation.equation}" data-value="${equation.value}">
                 <td>${equation.equation}</td>
                 <td>${equation.value}</td>
+                <td><button id="run-again" class="btn btn-warning">RUN AGAIN</button></td>
                 <td><button id="delete" class="btn btn-danger">DELETE</button></td>
             </tr>
         `);
@@ -90,6 +92,7 @@ function DeleteAll() {
     success: function(result) {
         // Do something with the result
         $('#result-value').text(0);
+        $('#result-equation').text('');
         getResults();
     }
   });
@@ -104,3 +107,14 @@ function clearInput() {
  $('#input1').val('');
 }
 
+/**
+ * Show Previous Calc
+ */
+function showPreviousCalc() {
+  setValues($(this).closest('tr').data('equation'), $(this).closest('tr').data('value'));
+}
+
+function setValues(equation, value) {
+  $('#result-equation').text(equation);
+  $('#result-value').text(value);
+}

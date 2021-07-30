@@ -22,8 +22,8 @@ body {
   float: left;
 }
 
-#result {
-  float: right;
+#result-container {
+  float: left;
 }
 
 #result-value {
