@@ -35,7 +35,7 @@ app.get('/result', function(request, response) {
 
 /**
  * App Delete
- * Clears our the Bundle Calculations array
+ * Clears out the Bundle Calculations array
  */
 app.delete('/result', function(req, response) {
   bundleCalculations = [];
