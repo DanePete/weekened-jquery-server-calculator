@@ -29,6 +29,7 @@ body {
 
 .solar-power {
   height: 30px;
+  border-radius: 18px;
 }
 
 #calc-container {

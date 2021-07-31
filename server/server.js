@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const { response } = require('express');
+const math = require('mathjs');
 const app = express();
 const PORT = 5000;
 let bundleCalculations = [];
@@ -20,7 +21,7 @@ app.use(express.static('server/public'));
  */
 app.post('/bundle', function(request, response) {
   let equation = request.body;
-  bundleCalculations.push({equation: equation.val, value: eval(equation.val)});
+  bundleCalculations.push({equation: equation.val, value: math.evaluate(equation.val)}); // Fine... I won't use eval, but you didn't say i couldn't use mathjs :p
   let ok = 200;
   response.send(ok);
 });

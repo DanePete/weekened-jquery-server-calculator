@@ -49,14 +49,14 @@ function checkIfFieldHasValue() {
   if($('#input1').val()) {
     bundle();
   } else {
-    $('body').prepend(`
+    $('#alert-container').hide().prepend(`
     <div class="error alert alert-danger alert-dismissible fade show">
       <em>Please input an equation</em>
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
-  `);
+  `).fadeIn();
   }
 }
 
@@ -74,7 +74,7 @@ function bundle() {
     console.log('POST /bundle', response);
   }).catch((error) => {
     console.log('failed', error);
-    $('body').prepend(`
+    $('#alert-container').prepend(`
       <div class="error alert alert-danger alert-dismissible fade show">
         <em>Error: incorrect input value</em>
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -196,6 +196,16 @@ function powerDrain() {
         stopInterval(countInterval);
         $("#input1").prop('disabled', true);
         $('.btn').prop("disabled",true);
+        $('#alert-container').prepend(`
+        <div class="error alert alert-danger alert-dismissible fade show">
+          <em>You've run out of power! Hover over the moon to boost your calculators power level</em>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      `);
+      $("body .alert:first-child").hide();
+      $("body .alert:first-child").fadeIn();
       }
     }, 1000);
 }
@@ -208,6 +218,7 @@ function powerUp() {
     countInterval = setInterval(function(){  
       count = count += counter;
       if(count >= -1) {
+        $(".alert").fadeOut(2000, function() { $(".alert").remove(); });
         $('.btn').prop("disabled",false);
         $('.solar-power').addClass('solar-panal-highlight');
         $('#number').text(count);
