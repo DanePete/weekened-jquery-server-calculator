@@ -20,22 +20,19 @@ function onReady() {
 
   powerDrain(); // Start the power drain countdown
 
+  // mouse enter moon
   $( "#moon" ).mouseover(function() {
-    console.log('hovered');
     clearInterval(countInterval);
     powerUp();
   });
+
+  // mouse leave moon
   $( "#moon" ).mouseleave(function() {
-    console.log('count interval',countInterval);
     clearInterval(countInterval);
-    console.log('got here');
     $('.solar-power').removeClass('solar-panal-highlight');
     powerDrain();
-    console.log('hovered');
-    // powerDrain();
   });
   getResults();
-  // powerDrain();
 }
 
 
