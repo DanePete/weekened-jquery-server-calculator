@@ -224,7 +224,7 @@ function powerUp() {
         $("#input1").attr('readonly', true);
         $('.solar-power').removeClass('solar-panal-highlight');
       }
-    }, 300);
+    }, 150);
   // }
 }
 
