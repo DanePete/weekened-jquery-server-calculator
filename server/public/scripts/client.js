@@ -127,7 +127,7 @@ function DeleteIndividualRecord() {
  */
 function clearInput() {
   inputString = '';
- $('#input1').val('');
+  $('#input1').val('');
 }
 
 /**
