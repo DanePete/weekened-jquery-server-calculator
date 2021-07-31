@@ -109,6 +109,7 @@ function DeleteAll() {
 
 /**
  * Delete Individual Record
+ * Sends the id of the record that the user selected to delete.
  */
 function DeleteIndividualRecord() {
   let id = $(this).closest('tr').data('id');
@@ -137,6 +138,10 @@ function showPreviousCalc() {
   setValues($(this).closest('tr').data('equation'), $(this).closest('tr').data('value'));
 }
 
+/**
+ * Set Values
+ * Small reusable function to render the equation and value to the dom
+ */
 function setValues(equation, value) {
   $('#result-equation').text(equation);
   $('#result-value').text(value);

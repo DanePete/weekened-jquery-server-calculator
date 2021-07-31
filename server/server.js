@@ -55,6 +55,5 @@ app.delete('/result:id', function(req, response) {
  * listen YO!
  */
 app.listen(PORT, () => {
-  //console.log ('Server is running on port', PORT)
   console.log (`Connect to: http://localhost:${PORT}`);
 })
