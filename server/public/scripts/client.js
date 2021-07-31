@@ -31,7 +31,14 @@ function checkIfFieldHasValue() {
   if($('#input1').val()) {
     bundle();
   } else {
-    alert("yeah you didn't type anything in buddy");
+    $('body').prepend(`
+    <div class="error alert alert-danger alert-dismissible fade show">
+      <em>Please input an equation</em>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  `);
   }
 }
 
@@ -150,7 +157,7 @@ function setValues(equation, value) {
 
 /**
  * Convert calc value to string and add thousand markers
- * This function was yanked form the web.
+ * This function was yanked from the web.
  */
 function numberWithCommas(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
