@@ -13,10 +13,16 @@
   <title>Weekend jQuery server calculator</title>
 </head>
 <body>
-  <h1>Calculator</h1>
+  
   <em>Go nuts with your calculations</em>
   <div id="main">
-    <div id="calc-container" class="make-it-slow">
+    <div id="calc-container" class="make-it-slow float-left">
+      <div class="rows calc-header-row">
+        <h4 class="float-left">Calculator</h4>
+          <div class="float-right">
+            <img class="solar-power" src="assets/34579_m.jpg">
+          </div>
+      </div>
       <div class="rows input-clear-row">
         <input type="text" id="input1" class="form-control">
         <button id="clear" data-key="c" class="btn btn-primary">C</button>
@@ -46,7 +52,7 @@
         <button id="key" data-key="/" class="btn btn-primary"d>/</button>
       </div>
     </div>
-    <div id="result-container">
+    <div id="result-container" class="float-left">
       <h2 id="result">Equation: <span id="result-equation"><i></i></span></h2>
       <h2 id="result">Value: <span id="result-value">0</span></h2>
     </div>

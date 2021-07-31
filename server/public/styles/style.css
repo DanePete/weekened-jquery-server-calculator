@@ -12,22 +12,23 @@ body {
   margin-right: 5px;
 }
 
+.calc-header-row {
+  width: 235px;
+  margin: 5px;
+}
+
 .input-clear-row {
   display: flex;
   width: 235px;
   margin: 5px;
 }
 
-#calc-container {
-  float: left;
-}
-
-#result-container {
-  float: left;
-}
-
 #result-value {
   color: #e91e63;
+}
+
+.solar-power {
+  height: 30px;
 }
 
 #calc-container {
