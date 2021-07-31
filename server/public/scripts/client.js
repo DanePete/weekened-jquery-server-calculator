@@ -6,10 +6,6 @@ let counter = 1; // This will be the amount to change by
 let count = 10;   // This will be the current count at any given time
 let countInterval = null;
 
-jQuery('#red-block').click(function (e) {
-
-});
-
 function onReady() {
   $(document).on('click','#clear', clearInput);
   $(document).on('click', '#key', createInput);
