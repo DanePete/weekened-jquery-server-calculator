@@ -27,5 +27,42 @@ body {
 }
 
 #result-value {
-  color: red;
+  color: #e91e63;
+}
+
+#calc-container {
+  background: grey;
+  padding: 15px;
+  border-radius: 9px;
+  margin-top: 5px;
+  margin-right: 10px;
+  margin-bottom: 15px;
+}
+
+/* The slow way */
+.make-it-slow {
+  box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+/* Transition to a bigger shadow on hover */
+.make-it-slow:hover {
+  box-shadow: 3px 5px 5px 1px black;
+}
+
+/* The fast way */
+.make-it-fast {
+  box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+}
+
+/* Pre-render the bigger shadow, but hide it */
+.make-it-fast::after {
+  box-shadow: 3px 5px 5px 1px black;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Transition to showing the bigger shadow on hover */
+.make-it-fast:hover::after {
+  opacity: 1;
 }
