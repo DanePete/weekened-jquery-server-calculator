@@ -2,6 +2,13 @@ $(document).ready(onReady);
 
 let inputString = '';
 let inputArray = [];
+let counter = 1; // This will be the amount to change by
+let count = 10;   // This will be the current count at any given time
+let countInterval = null;
+
+jQuery('#red-block').click(function (e) {
+
+});
 
 function onReady() {
   $(document).on('click','#clear', clearInput);
@@ -10,8 +17,27 @@ function onReady() {
   $(document).on('click', '#delete-all', deleteAll);
   $(document).on('click', '#delete', deleteIndividualRecord);
   $(document).on('click', '#run-again', showPreviousCalc);
+
+  powerDrain(); // Start the power drain countdown
+
+  $( "#moon" ).mouseover(function() {
+    console.log('hovered');
+    clearInterval(countInterval);
+    powerUp();
+  });
+  $( "#moon" ).mouseleave(function() {
+    console.log('count interval',countInterval);
+    clearInterval(countInterval);
+    console.log('got here');
+    $('.solar-power').removeClass('solar-panal-highlight');
+    powerDrain();
+    console.log('hovered');
+    // powerDrain();
+  });
   getResults();
+  // powerDrain();
 }
+
 
 /**
  * Create Input
@@ -161,4 +187,50 @@ function setValues(equation, value) {
  */
 function numberWithCommas(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+/**
+ * Power Drain
+ * drains the calculators power
+ */
+function powerDrain() {
+    countInterval = setInterval(function(){  
+      count = count -= counter;
+      if(count >= 0) {
+        $("#input1").attr('readonly', false);
+        $('.btn').prop("disabled",false);
+        $('#number').text(count);
+      } else {
+        stopInterval(countInterval);
+        $("#input1").prop('disabled', true);
+        $('.btn').prop("disabled",true);
+      }
+    }, 1000);
+}
+
+/**
+ * Power Up
+ * Boosts the calculators power
+ */
+function powerUp() {
+    countInterval = setInterval(function(){  
+      count = count += counter;
+      if(count >= -1) {
+        $('.btn').prop("disabled",false);
+        $('.solar-power').addClass('solar-panal-highlight');
+        $('#number').text(count);
+      } else {
+        stopInterval(countInterval);
+        $("#input1").attr('readonly', true);
+        $('.solar-power').removeClass('solar-panal-highlight');
+      }
+    }, 300);
+  // }
+}
+
+/**
+ * Stops the interval from running
+ */
+function stopInterval(countInterval) {
+  clearInterval(countInterval);
 }
