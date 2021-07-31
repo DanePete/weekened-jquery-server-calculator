@@ -14,34 +14,46 @@ app.use(bodyParser.urlencoded({extended:true}))
 // Serve up static files (HTML, CSS, Client JS)
 app.use(express.static('server/public'));
 
+/**
+ * App Post
+ * Retrieves the inputs from the user and pushes an object into the Bundle Calculations Array
+ */
 app.post('/bundle', function(request, response) {
   let equation = request.body;
   bundleCalculations.push({equation: equation.val, value: eval(equation.val)});
-  console.log(bundleCalculations);
   let ok = 200;
   response.send(ok);
 });
 
 /**
- * 
+ * App Get Result
+ * Returns the Bundle Calculations array (a collection of equations)
  */
 app.get('/result', function(request, response) {
   response.send(bundleCalculations);
 });
 
+/**
+ * App Delete
+ * Clears our the Bundle Calculations array
+ */
 app.delete('/result', function(req, response) {
   bundleCalculations = [];
-  console.log('request param', req.params.id);
   response.send(bundleCalculations);
 });
 
+/**
+ * App Delete
+ * Removes individual array items by id
+ */
 app.delete('/result:id', function(req, response) {
   bundleCalculations.splice(req.params.id, 1);
-  console.log('request param', req.params.id);
   response.send(bundleCalculations);
 });
 
-
+/**
+ * listen YO!
+ */
 app.listen(PORT, () => {
   //console.log ('Server is running on port', PORT)
   console.log (`Connect to: http://localhost:${PORT}`);

@@ -1,5 +1,3 @@
-console.log($);
-
 $(document).ready(onReady);
 
 let inputString = '';
@@ -20,7 +18,6 @@ function onReady() {
  * This function captures the users inputs and assigns them to a string
  */
 function createInput() {
-  console.log($(this).data('key'));
   inputString += $(this).data('key');
   inputArray.push($(this).data('key'));
   $("#input1").val(inputString);
@@ -115,7 +112,6 @@ function DeleteAll() {
  */
 function DeleteIndividualRecord() {
   let id = $(this).closest('tr').data('id');
-  console.log(id);
   $.ajax({
     url: `/result${id}`,
     type: 'DELETE',
