@@ -52,7 +52,14 @@ function bundle() {
     console.log('POST /bundle', response);
   }).catch((error) => {
     console.log('failed', error);
-    $('body').prepend('<h2>ERROR</h2>');
+    $('body').prepend(`
+      <div class="error alert alert-danger alert-dismissible fade show">
+        <em>Error: incorrect input value</em>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    `);
   });
   $('#input1').val('');
   inputString = ''; // Sets our input string back to empty
