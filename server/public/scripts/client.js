@@ -7,8 +7,8 @@ function onReady() {
   $(document).on('click','#clear', clearInput);
   $(document).on('click', '#key', createInput);
   $(document).on('click', '#equals', checkIfFieldHasValue);
-  $(document).on('click', '#delete-all', DeleteAll);
-  $(document).on('click', '#delete', DeleteIndividualRecord);
+  $(document).on('click', '#delete-all', deleteAll);
+  $(document).on('click', '#delete', deleteIndividualRecord);
   $(document).on('click', '#run-again', showPreviousCalc);
   getResults();
 }
@@ -73,7 +73,7 @@ function getResults() {
     url: '/result'
   }).then(function (response) {
     if(response[response.length - 1]) {
-      setValues(response[response.length - 1].equation, response[response.length - 1].value);
+      setValues(response[response.length - 1].equation, numberWithCommas(response[response.length - 1].value));
     }
     $('#results').find('tbody').empty();
     for (let i = 0; i < response.length; i++) {
@@ -94,7 +94,7 @@ function getResults() {
  * Delete All
  * Deletes the entire array on the server side
  */
-function DeleteAll() {
+function deleteAll() {
   $.ajax({
     url: '/result',
     type: 'DELETE',
@@ -111,7 +111,7 @@ function DeleteAll() {
  * Delete Individual Record
  * Sends the id of the record that the user selected to delete.
  */
-function DeleteIndividualRecord() {
+function deleteIndividualRecord() {
   let id = $(this).closest('tr').data('id');
   $.ajax({
     url: `/result${id}`,
@@ -129,13 +129,14 @@ function DeleteIndividualRecord() {
 function clearInput() {
   inputString = '';
   $('#input1').val('');
+  setValues('',0);
 }
 
 /**
  * Show Previous Calc
  */
 function showPreviousCalc() {
-  setValues($(this).closest('tr').data('equation'), $(this).closest('tr').data('value'));
+  setValues($(this).closest('tr').data('equation'), numberWithCommas($(this).closest('tr').data('value')));
 }
 
 /**
@@ -145,4 +146,12 @@ function showPreviousCalc() {
 function setValues(equation, value) {
   $('#result-equation').text(equation);
   $('#result-value').text(value);
+}
+
+/**
+ * Convert calc value to string and add thousand markers
+ * This function was yanked form the web.
+ */
+function numberWithCommas(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
