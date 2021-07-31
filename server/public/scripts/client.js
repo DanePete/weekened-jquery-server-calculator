@@ -31,7 +31,6 @@ function onReady() {
   getResults();
 }
 
-
 /**
  * Create Input
  * This function captures the users inputs and assigns them to a string
