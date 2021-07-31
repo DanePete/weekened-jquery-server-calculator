@@ -63,6 +63,29 @@ body {
   transition: opacity 0.3s ease-in-out;
 }
 
+.light-beam {
+  position: absolute;
+  top: 20px;
+  right: 15px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #fff;
+  box-shadow:
+    0 0 60px 30px #fff,  /* inner white */
+    0 0 100px 60px #f0f, /* middle magenta */
+    0 0 140px 90px #0ff; /* outer cyan */
+  transition: box-shadow 0.3s ease-in-out;  
+}
+
+.light-beam:hover {
+  box-shadow:
+  0 0 60px 60px #fff,  /* inner white */
+  0 0 100px 90px #f0f, /* middle magenta */
+  0 0 140px 120px #0ff; /* outer cyan */
+  transition: box-shadow 0.3s ease-in-out;
+}
+
 /* Transition to showing the bigger shadow on hover */
 .make-it-fast:hover::after {
   opacity: 1;
