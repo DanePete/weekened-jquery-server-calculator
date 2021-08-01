@@ -13,13 +13,19 @@
   <title>Weekend jQuery server calculator</title>
 </head>
 <body>
-  <div id="alert-container"></div>
-  <div id="moon" class="light-beam"></div>
-  <h2>Power level: <span id="number">10</span></h2>
-  <p>
-    <strong>* It's dark out... Your calculator runs off of solar - </strong>
-    <strong>hover over the moon on the right to boost your power</strong>
-  </p>
+
+  <!-- Header -->
+  <div id="header" class="header">
+    <div id="alert-container"></div>
+    <div id="moon" class="light-beam"></div>
+    <h2>Power level: <span id="number">10</span></h2>
+    <p>
+      <strong>* It's dark out... Your calculator runs off of solar - </strong>
+      <strong>hover over the moon on the right to boost your power</strong>
+    </p>
+  </div>
+
+  <!-- Manin Container -->
   <div id="main">
     <div id="calc-container" class="make-it-slow float-left">
       <div class="rows calc-header-row">
@@ -61,9 +67,9 @@
       <h2 id="result">Equation: <span id="result-equation"><i></i></span></h2>
       <h2 id="result">Value: <span id="result-value">0</span></h2>
     </div>
-    
   </div>
 
+  <!-- table to display previous equation results -->
   <table id="results" class="table table-striped">
     <thead>
       <th>Previous Equation</th>
@@ -75,8 +81,11 @@
       <!-- Dynamic Data -->
     </tbody>
   </table>
+
+  <!-- oh macarena -->
   <div id="dance">
     <img src="./assets/tenor.gif">
   </div>
+
 </body>
 </html>
