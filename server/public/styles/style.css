@@ -109,7 +109,7 @@ strong {
 }
 
 #dance {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   right: 0;
   width: 275px;
@@ -181,3 +181,5 @@ strong {
       background-position: 0% 50%;
   }
 }
+
+
