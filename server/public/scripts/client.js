@@ -28,6 +28,12 @@ function onReady() {
     $('.solar-power').removeClass('solar-panal-highlight');
     powerDrain();
   });
+
+    // mouse enter dancing stick
+    $('#dance img').one('mouseover', function() {
+      $('.thought').css('visibility','visible').hide().fadeIn(4000);
+    }).hide().fadeIn(4000);
+
   getResults();
 }
 
@@ -237,3 +243,11 @@ function powerUp() {
 function stopInterval(countInterval) {
   clearInterval(countInterval);
 }
+
+// $(function() {
+//   $('#div1').hover(function() { 
+//   $('#div2').fadeIn(); 
+//   }, function() { 
+//     $('#div2').fadeOut(); 
+//   });
+// });
