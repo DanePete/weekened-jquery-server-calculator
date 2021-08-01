@@ -127,6 +127,7 @@ strong {
   align-items:center;
   justify-content:center;
   text-align:center;
+  z-index: 99999;
 }
 .thought:before,
 .thought:after {
