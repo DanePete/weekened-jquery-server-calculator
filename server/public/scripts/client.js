@@ -19,6 +19,7 @@ function onReady() {
   // mouse enter moon
   $( "#moon" ).mouseover(function() {
     clearInterval(countInterval);
+    $('.thought').css('visibility','visible').hide().fadeIn(4000);
     powerUp();
   });
 
@@ -28,11 +29,6 @@ function onReady() {
     $('.solar-power').removeClass('solar-panal-highlight');
     powerDrain();
   });
-
-    // mouse enter dancing stick
-    $('#dance img').one('mouseover', function() {
-      $('.thought').css('visibility','visible').hide().fadeIn(4000);
-    }).hide().fadeIn(4000);
 
   getResults();
 }
