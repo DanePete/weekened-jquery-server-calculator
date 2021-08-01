@@ -112,7 +112,7 @@ function getResults() {
         $('#results tbody').append(`
             <tr data-id="${i}" data-equation="${equation.equation}" data-value="${equation.value}">
                 <td>${equation.equation}</td>
-                <td>${equation.value}</td>
+                <td>${numberWithCommas(equation.value)}</td>
                 <td><button id="run-again" class="btn btn-warning">RUN AGAIN</button></td>
                 <td><button id="delete" class="btn btn-danger">DELETE</button></td>
             </tr>
@@ -244,10 +244,3 @@ function stopInterval(countInterval) {
   clearInterval(countInterval);
 }
 
-// $(function() {
-//   $('#div1').hover(function() { 
-//   $('#div2').fadeIn(); 
-//   }, function() { 
-//     $('#div2').fadeOut(); 
-//   });
-// });
