@@ -20,6 +20,7 @@ function onReady() {
   $( "#moon" ).mouseover(function() {
     clearInterval(countInterval);
     $('.thought').css('visibility','visible').hide().fadeIn(4000);
+    $('body').addClass('space-is-awesome');
     powerUp();
   });
 

@@ -8,6 +8,12 @@ body {
   margin: 5px;
 }
 
+#alert-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 #input1 {
   margin-right: 5px;
 }
@@ -156,4 +162,22 @@ strong {
              -24px 17px 0 -6px #fff,
              -5px 25px 0 -10px #fff;
   
+}
+
+.space-is-awesome {
+  background: linear-gradient(-45deg, black, rgb(44, 1, 40), #222,#222);
+  background-size: 400% 400%;
+  animation: gradient 30s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+      background-position: 0% 50%;
+  }
+  50% {
+      background-position: 100% 50%;
+  }
+  100% {
+      background-position: 0% 50%;
+  }
 }
