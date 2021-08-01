@@ -21,7 +21,9 @@ app.use(express.static('server/public'));
  */
 app.post('/bundle', function(request, response) {
   let equation = request.body;
-  bundleCalculations.push({equation: equation.val, value: math.evaluate(equation.val)}); // Fine... I won't use eval, but you didn't say i couldn't use mathjs :p
+  let ans = math.evaluate(equation.val)  // fix issue: 0.30000000000000004
+  
+  bundleCalculations.push({equation: equation.val, value: math.format(ans, {precision: 14})}); // Fine... I won't use eval, but you didn't say i couldn't use mathjs :p
   let ok = 200;
   response.send(ok);
 });

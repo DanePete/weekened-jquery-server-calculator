@@ -106,6 +106,7 @@ strong {
   position: absolute;
   bottom: 0;
   right: 0;
+  width: 275px;
 }
 
 #dance img {
@@ -115,6 +116,7 @@ strong {
 .thought {
   visibility: hidden;
   display:flex;
+  flex-wrap: wrap;
   background-color:#fff;
   color: black;
   padding:20px;
@@ -126,7 +128,6 @@ strong {
   position:relative;
   align-items:center;
   justify-content:center;
-  text-align:center;
   z-index: 99999;
 }
 .thought:before,
